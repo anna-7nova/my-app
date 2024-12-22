@@ -1,10 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Accordion from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
+import { OnOff } from './components/OnOff/OnOff';
 
 function App() {
+  //styles
+  // title ==="on"
+  //   ? {"background-color: green"}
+  //   : {"background-color: red"}
+
+
   return (
     <div>
       <AppTitle/>
@@ -12,6 +18,12 @@ function App() {
       <Accordion titleValue="Menu" collapsed={false}/>
       <Accordion titleValue="List" collapsed={true}/>
       <Rating value={2}/>
+      <div>
+        <OnOff type={"button"} value={"on"} />
+        <OnOff type={"button"} value={"off"} />
+        <OnOff type={"radio"} />
+        
+      </div>
     </div>
   );
 }
