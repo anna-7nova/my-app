@@ -3,14 +3,9 @@ import './App.css';
 import Accordion from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
 import { OnOff } from './components/OnOff/OnOff';
+import { Button } from './components/Button/Button';
 
 function App() {
-  //styles
-  // title ==="on"
-  //   ? {"background-color: green"}
-  //   : {"background-color: red"}
-
-
   return (
     <div>
       <AppTitle/>
@@ -19,10 +14,8 @@ function App() {
       <Accordion titleValue="List" collapsed={true}/>
       <Rating value={2}/>
       <div>
-        <OnOff type={"button"} value={"on"} />
-        <OnOff type={"button"} value={"off"} />
-        <OnOff type={"radio"} />
-        
+        <OnOff isTurnIn={true}/>
+        <OnOff isTurnIn={false}/>
       </div>
     </div>
   );

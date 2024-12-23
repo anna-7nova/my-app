@@ -1,17 +1,16 @@
 import React from 'react';
+import { Button} from '../Button/Button';
 
-type OnOffType = {
-    value?: string
-    style?: string
-    type: "radio" | "button"
+type OnnOffType = {
+    isTurnIn: boolean
 }
 
-export const OnOff = (props: OnOffType) => {
+export const OnOff = (props: OnnOffType) => {
     return (
-        <>
-        <input type={props.type} value={props.value}/>
-        </>
+        <div>
+        <Button type="button" name={"on"} isTurnIn={props.isTurnIn}/>
+        <Button type="button" name={"off"} isTurnIn={props.isTurnIn}/>
+        <Button type="radio" isTurnIn={props.isTurnIn}/>
+        </div>
     );
 }
-
-
