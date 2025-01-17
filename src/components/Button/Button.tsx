@@ -1,34 +1,20 @@
 import React from 'react';
 
 export type ButtonType = {
-    name?: string
     type: "radio" | "button"
-    isTurnIn: boolean
+    isTurnIn?: boolean
+    value: "on" | "off" 
 }
 
 export const Button = (props: ButtonType) => {
-    {
-        if (props.name === "on" && props.isTurnIn === true) {
+        //bll
+        const disabledBtn = ""
+        const typeOfButton = props.isTurnIn ? props.value : disabledBtn
             return (
                 <>
-                    <input type={props.type} name={props.name} value={"on"}/>
+                    <input type={props.type} value={typeOfButton} />
                 </>
             );
-        } else if (props.name === "off" && props.isTurnIn === false) {
-            return (
-                <>
-                    <input type={props.type} name={props.name} value={"off"}/>
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <input type={props.type} name={props.name}/>
-                </>
-            );
-        }
-    }
-
 }
 
 

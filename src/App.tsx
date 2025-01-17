@@ -14,8 +14,8 @@ function App() {
       <Accordion titleValue="List" collapsed={true}/>
       <Rating value={2}/>
       <div>
-        <OnOff isTurnIn={true}/>
-        <OnOff isTurnIn={false}/>
+        <OnOff />
+        <OnOff />
       </div>
     </div>
   );

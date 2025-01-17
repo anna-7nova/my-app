@@ -5,8 +5,3 @@ input[value="on"] {
 input[value="off"] {
     background-color: red;
 }
-
-input:checked  {
-    background-color: green;
-    color: green;
-}
