@@ -3,7 +3,8 @@ import './App.css';
 import Accordion from './components/Accordion/Accordion';
 import { Rating } from './components/Rating/Rating';
 import { OnOff } from './components/OnOff/OnOff';
-import { Button } from './components/Button/Button';
+import UncontrolledAccordion from './components/UncontrolledAccordion/UncontrolledAccordion';
+import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating';
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <OnOff />
         <OnOff />
       </div>
+      <UncontrolledAccordion titleValue="Menu"/>
+      <UncontrolledAccordion titleValue="List"/>
+      <UncontrolledRating/>
+      <UncontrolledRating/>
     </div>
   );
 }
