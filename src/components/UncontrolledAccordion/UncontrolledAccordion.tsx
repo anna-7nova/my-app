@@ -25,7 +25,7 @@ type AccordionTitlePropsType = {
 
 function AccordionTitle(props: AccordionTitlePropsType) {
     console.log("title of accordion is rendered")
-        return <h4 onClick={props.onClick}>--{props.title}--</h4>
+        return <h4 onClick={()=>props.onClick()}>--{props.title}--</h4>
 }
 
 function AccordionBody() {

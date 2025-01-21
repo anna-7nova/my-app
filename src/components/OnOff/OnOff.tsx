@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { Button} from '../Button/Button';
 
+type OnOffType = {
+onClick: ()=> void
+on: boolean
+}
 
-export const OnOff = () => {
-//bll
-    const [currentBtnIsOn, setCurrentBtnIsOn] = useState<boolean>(true)
-    const onClickHandler = () => {
-        setCurrentBtnIsOn(!currentBtnIsOn)
-    }
+export const OnOff = ({onClick, on } : OnOffType) => {
 //styles
     const indicatorStyle = {
-    backgroundColor: currentBtnIsOn ? "green" : "red",
+    backgroundColor: on ? "green" : "red",
     display: "inline-block",
     borderRadius: "5px",
     border: "1px solid black",
@@ -20,9 +19,9 @@ export const OnOff = () => {
     }
 
     return (
-        <div onClick={onClickHandler}>
-        <Button type="button"  isTurnIn={!currentBtnIsOn} value ={"off"} />
-        <Button type="button"  isTurnIn={currentBtnIsOn} value ={"on"} />
+        <div onClick={onClick}>
+        <Button type="button"  isTurnIn={!on} value ={"off"} />
+        <Button type="button"  isTurnIn={on} value ={"on"} />
         <div style={indicatorStyle}></div>
         </div>
     );

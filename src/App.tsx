@@ -1,22 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Accordion from './components/Accordion/Accordion';
-import { Rating } from './components/Rating/Rating';
-import { OnOff } from './components/OnOff/OnOff';
+import { Rating, ValueType } from './components/Rating/Rating';
+import { UncontrolledOnOff } from './components/UncontrolledOnOff/UncontrolledOnOff';
 import UncontrolledAccordion from './components/UncontrolledAccordion/UncontrolledAccordion';
 import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating';
+import { OnOff } from './components/OnOff/OnOff';
 
 function App() {
+  //states
+const [collapsed, setCollapsed] = useState(true)
+const [ratingValue, setRatingValue] = useState<ValueType>(0)
+const [currentBtnIsOn, setCurrentBtnIsOn] = useState<boolean>(false)
+
+//handlers
+const onClickAccordionHandler = ()=>setCollapsed(!collapsed)
+const onClickOnOffHandler = () => setCurrentBtnIsOn(!currentBtnIsOn)
+
   return (
     <div>
       <AppTitle/>
-      <Rating value={5}/>
-      <Accordion titleValue="Menu" collapsed={false}/>
-      <Accordion titleValue="List" collapsed={true}/>
-      <Rating value={2}/>
+      <Rating value={ratingValue} onClick={setRatingValue}/>
+      <Accordion titleValue="Menu" collapsed={collapsed} onClick={onClickAccordionHandler}/>
+      <Accordion titleValue="List" collapsed={collapsed} onClick={onClickAccordionHandler}/>
+      <Rating value={ratingValue} onClick={setRatingValue}/>
       <div>
-        <OnOff />
-        <OnOff />
+        <OnOff onClick={onClickOnOffHandler} on={currentBtnIsOn}/>
+        <OnOff onClick={onClickOnOffHandler} on={currentBtnIsOn}/>
+      </div>
+      <div>
+        <UncontrolledOnOff onChange={setCurrentBtnIsOn}/>{currentBtnIsOn.toString()}
       </div>
       <UncontrolledAccordion titleValue="Menu"/>
       <UncontrolledAccordion titleValue="List"/>
@@ -27,7 +40,7 @@ function App() {
 }
 
 function AppTitle() {
-  return (<>this is the new app</>);
+  return <>this is the new app</>;
 }
 
 
