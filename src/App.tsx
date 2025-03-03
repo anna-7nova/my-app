@@ -14,15 +14,15 @@ const [ratingValue, setRatingValue] = useState<ValueType>(0)
 const [currentBtnIsOn, setCurrentBtnIsOn] = useState<boolean>(false)
 
 //handlers
-const onClickAccordionHandler = ()=>setCollapsed(!collapsed)
+const onChangeAccordionHandler = ()=>setCollapsed(!collapsed)
 const onClickOnOffHandler = () => setCurrentBtnIsOn(!currentBtnIsOn)
 
   return (
     <div>
       <AppTitle/>
       <Rating value={ratingValue} onClick={setRatingValue}/>
-      <Accordion titleValue="Menu" collapsed={collapsed} onClick={onClickAccordionHandler}/>
-      <Accordion titleValue="List" collapsed={collapsed} onClick={onClickAccordionHandler}/>
+      <Accordion titleValue="Menu" collapsed={collapsed} onChange={onChangeAccordionHandler} items={[]} onClick={()=>{}}/>
+      <Accordion titleValue="List" collapsed={collapsed} onChange={onChangeAccordionHandler} items={[]} onClick={()=>{}}/>
       <Rating value={ratingValue} onClick={setRatingValue}/>
       <div>
         <OnOff onClick={onClickOnOffHandler} on={currentBtnIsOn}/>
