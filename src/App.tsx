@@ -6,12 +6,20 @@ import { UncontrolledOnOff } from './components/UncontrolledOnOff/UncontrolledOn
 import UncontrolledAccordion from './components/UncontrolledAccordion/UncontrolledAccordion';
 import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating';
 import { OnOff } from './components/OnOff/OnOff';
+import { ItemsPropsType, Select} from './components/Select/Select';
 
 function App() {
   //states
 const [collapsed, setCollapsed] = useState(true)
 const [ratingValue, setRatingValue] = useState<ValueType>(0)
 const [currentBtnIsOn, setCurrentBtnIsOn] = useState<boolean>(false)
+
+//busines logic
+const data: ItemsPropsType[] = [
+  {value: "1", title: "Italy"},
+  {value: "2", title: "France"},
+  {value: "3", title: "Norway"},
+]
 
 //handlers
 const onChangeAccordionHandler = ()=>setCollapsed(!collapsed)
@@ -35,6 +43,7 @@ const onClickOnOffHandler = () => setCurrentBtnIsOn(!currentBtnIsOn)
       <UncontrolledAccordion titleValue="List"/>
       <UncontrolledRating/>
       <UncontrolledRating/>
+      <Select items={data} onClick={(value: string)=>{}}/>
     </div>
   );
 }
