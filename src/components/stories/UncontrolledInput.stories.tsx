@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions';
-import { Rating } from '../Rating/Rating';
 import { ChangeEvent, useRef, useState } from 'react';
 
 export default {

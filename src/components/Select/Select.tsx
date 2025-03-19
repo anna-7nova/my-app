@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, KeyboardEvent, useState } from 'react';
+import s from "./Select.module.css"
 
 export type ItemsPropsType = {
     value: string
@@ -8,65 +9,43 @@ export type ItemsPropsType = {
 export type SelectPropsType = {
     items: ItemsPropsType[]
     onClick: (value: string) => void
+    propsValue?: string
 }
 
-export const Select = ({ items, onClick }: SelectPropsType) => {
+export const Select = ({ items, onClick, propsValue }: SelectPropsType) => {
     const [collapsed, setCollapsed] = useState(true)
-    const [currentChoice, setCurrentChoice] = useState("none")
+
+    const currentValue = items.find(el => el.value === propsValue)
 
     //handlers
-    const onChangeHandler = (e: FormEvent<HTMLDivElement>) => {
-        setCollapsed(false)
+    const onClickHandler = (e: FormEvent<HTMLDivElement>) => {
+        if (collapsed) {
+            setCollapsed(false)
+        } else {
+            const newText = e.currentTarget.innerHTML
+            const newValue = items.find(el => el.title === newText) || { value: "0", title: "" }
+            onClick(newValue?.value)
+            setCollapsed(true)
+        }
+    }
+    const onKeyUpHandler = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (collapsed && e.key === 'Enter') {
+            setCollapsed(false)
+        } else if (e.key === 'Enter') {
+            setCollapsed(true)
+        }
     }
 
-    const choiceHandler = (e: FormEvent<HTMLDivElement>) => {
-        setCurrentChoice(e.currentTarget.innerHTML)
-        setCollapsed(true)
-    }
 
-    const listOptions = items.map(el => <div onClick={choiceHandler} key={el.value}>{el.title}</div>)
+    const listOptions = items.map(el => <div onClick={onClickHandler} key={el.value} className={s.element} >{el.title}</div>)
 
     return (
-        <>
-            {collapsed
-                ? <div onClick={onChangeHandler} >{currentChoice}</div>
-                : <>
-                <div onClick={choiceHandler}>none</div> 
+        <div onKeyUp={onKeyUpHandler} tabIndex={0} >
+            <div onClick={onClickHandler} className={s.choiced}>{currentValue?.title}</div>
+            {!collapsed && <div className={s.options}>
+                <div onClick={onClickHandler} className={s.element}>none</div>
                 {listOptions}
-                </>}
-        </>
+            </div>}
+        </div>
     );
 }
-
-/*
-
-<FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Country</InputLabel>
-  <Select
-    labelId="demo-simple-select-label"
-    id="demo-simple-select"
-    value={currentChoice}
-    label="Country"
-    onChange={onChangeHandler}
-  >
-    listOptions
-  </Select>
-</FormControl>
-
-export const ControlledSelect = () => {
-    const[value, setValue]=useState<string | undefined>(undefined)
-    const onChangeHandler=(e: ChangeEvent<HTMLSelectElement>)=> {
-        setValue(e.currentTarget.value)
-    }
-    return (
-        <>
-        <select value={value} onChange={onChangeHandler}>
-            <option>none</option>
-            <option value={"1"}>Grodno</option>
-            <option value={"2"}>Minsk</option>
-            <option value={"3"}>Brest</option>
-        </select>
-        </>
-    )
-}
-    */

@@ -1,0 +1,20 @@
+.choiced{
+    position: relative;
+    border: 1px solid black;
+    min-height: 20px;
+}
+
+.options{
+    border: 1px solid black;
+    margin-top: 2px;
+}
+
+.options .element:hover{
+    background-color: blue;
+    color: white;
+}
+
+.options .element:focus{
+    background-color: blue;
+    color: white;
+}

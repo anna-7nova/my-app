@@ -8,8 +8,6 @@ export default {
     component: Rating,
 };
 
-const onChangeHandler = action("onChange")
-
 export const Rating0 = () => {
     return (
         <Rating value={0} onClick={()=>{}}/>
