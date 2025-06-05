@@ -7,6 +7,7 @@ import UncontrolledAccordion from './components/UncontrolledAccordion/Uncontroll
 import { UncontrolledRating } from './components/UncontrolledRating/UncontrolledRating';
 import { OnOff } from './components/OnOff/OnOff';
 import { ItemsPropsType, Select } from './components/Select/Select';
+import { memoizedSqr } from './tasks/le-task';
 
 function App() {
   //states
@@ -29,6 +30,11 @@ function App() {
     setCollapsed(!collapsed)
   }
   const [currentChoice, setCurrentChoice] = useState("none")
+
+  console.log(memoizedSqr(5)); //calculation
+  console.log(memoizedSqr(8)); //from cache
+  console.log(memoizedSqr(6)); //calculation
+  console.log(memoizedSqr(5)); //from cache
 
   return (
     <div>

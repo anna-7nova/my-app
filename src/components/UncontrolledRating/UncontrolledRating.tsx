@@ -1,12 +1,12 @@
 import React, { useState} from 'react';
 
 export function UncontrolledRating() {
-    debugger
-    console.log("rating is done")
+    // debugger
+    // console.log("rating is done")
     const [value, setValue] = useState<number>(0)
 
     const onClickHandler = (value: 1 | 2| 3 | 4 | 5) => {
-        debugger
+        // debugger
         setValue(value)
     }
     return (
@@ -30,6 +30,6 @@ function Star(props: StarPropsType) {
         color: props.selected ? "green" : "black",
         fontWeight: props.selected ? "bold" : "normal"
     }
-    console.log("star is rendered")
+    // console.log("star is rendered")
     return <span style={starStyle} onClick={()=>props.onClick(props.value)}>star </span>
 }

@@ -5,7 +5,7 @@ type AccordionPropsType = {
 }
 
 function UncontrolledAccordion(props: AccordionPropsType) {
-    console.log("accordion is rendering")
+    // console.log("accordion is rendering")
 
     const [collapsed, setCollapsed] = useState(true)
     const onClickHandler = () => setCollapsed(!collapsed)
@@ -24,12 +24,12 @@ type AccordionTitlePropsType = {
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    console.log("title of accordion is rendered")
+    // console.log("title of accordion is rendered")
         return <h4 onClick={()=>props.onClick()}>--{props.title}--</h4>
 }
 
 function AccordionBody() {
-    console.log("body of accordion is rendered")
+    // console.log("body of accordion is rendered")
     return (
         <ul>
             <li>1</li>

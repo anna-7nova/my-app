@@ -14,7 +14,7 @@ type AccordionPropsType = {
 }
 
 function Accordion(props: AccordionPropsType) {
-    console.log("accordion is rendering")
+    // console.log("accordion is rendering")
         return (
             <div>
                 <AccordionTitle title={props.titleValue} onChange={props.onChange}/>
@@ -30,7 +30,7 @@ type AccordionTitlePropsType = {
 }
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-    console.log("title of accordion is rendered")
+    // console.log("title of accordion is rendered")
         return <h4 onClick={()=>props.onChange()}>--{props.title}--</h4>
 }
 
@@ -40,7 +40,7 @@ type AccordionBodyPropsType = {
 }
 
 function AccordionBody(props: AccordionBodyPropsType) {
-    console.log("body of accordion is rendered")
+    // console.log("body of accordion is rendered")
     return (
         <ul>
             {props.items.map((el, index) => <li onClick={()=>props.onClick(el.value)} key={index}>{el.title}</li>)}
